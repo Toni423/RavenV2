@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://cuixyrogdm85e"]
+
+[ext_resource type="PackedScene" uid="uid://vnxsptfm3c0g" path="res://scenes/gatherersHut.tscn" id="1_8x6jk"]
+[ext_resource type="PackedScene" uid="uid://be2al5hs74j2h" path="res://scenes/raven.tscn" id="2_hq8du"]
+[ext_resource type="Script" path="res://src/test/testButton.cs" id="3_pnit4"]
+[ext_resource type="Script" path="res://src/managing/Inventory.cs" id="4_6di7x"]
+[ext_resource type="PackedScene" uid="uid://h8dj8tn3nnuw" path="res://scenes/trainingCamp.tscn" id="5_1hjay"]
+
+[node name="Test" type="Node2D"]
+
+[node name="Inventory" type="Node" parent="."]
+script = ExtResource("4_6di7x")
+
+[node name="GatherersHut" parent="." instance=ExtResource("1_8x6jk")]
+position = Vector2(886, 188)
+
+[node name="Raven" parent="." instance=ExtResource("2_hq8du")]
+position = Vector2(288, 256)
+
+[node name="Button" type="Button" parent="." node_paths=PackedStringArray("building")]
+offset_right = 188.0
+offset_bottom = 84.0
+script = ExtResource("3_pnit4")
+building = NodePath("../TrainingCamp")
+metadata/_edit_use_anchors_ = true
+
+[node name="TrainingCamp" parent="." instance=ExtResource("5_1hjay")]
+position = Vector2(870, 466)
+
+[node name="Raven2" parent="." instance=ExtResource("2_hq8du")]
+position = Vector2(350, 466)
+
+[node name="Raven3" parent="." instance=ExtResource("2_hq8du")]
+position = Vector2(129, 370)
+
+[connection signal="pressed" from="Button" to="Button" method="testClick"]

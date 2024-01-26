@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://h8dj8tn3nnuw"]
+
+[ext_resource type="Script" path="res://src/buildings/TrainingCamp.cs" id="1_qm3ne"]
+[ext_resource type="Texture2D" uid="uid://bte4o4tdf3my2" path="res://pngs/Athlon_Abbey_Lvl_8.webp" id="2_e3aoq"]
+[ext_resource type="Script" path="res://src/managing/clickGetParent.cs" id="3_k3wf1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_63c4f"]
+radius = 51.0
+height = 184.0
+
+[node name="TrainingCamp" type="Node2D" groups=["Building"]]
+script = ExtResource("1_qm3ne")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_e3aoq")
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("3_k3wf1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_63c4f")
+
+[connection signal="mouse_entered" from="Area2D" to="Area2D" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="Area2D" method="_on_mouse_exited"]

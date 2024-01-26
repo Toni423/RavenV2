@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://vnxsptfm3c0g"]
+
+[ext_resource type="Script" path="res://src/buildings/GatherersHut.cs" id="1_cdwbc"]
+[ext_resource type="Texture2D" uid="uid://cy5kkebngxq1h" path="res://pngs/Berry_Gatherer.webp" id="2_hew2q"]
+[ext_resource type="Script" path="res://src/managing/clickGetParent.cs" id="3_eo8s8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_maj6f"]
+radius = 70.0286
+
+[node name="GatherersHut" type="Node2D" groups=["Building"]]
+script = ExtResource("1_cdwbc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.549237, 0.549237)
+texture = ExtResource("2_hew2q")
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("3_eo8s8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_maj6f")
+
+[connection signal="mouse_entered" from="Area2D" to="Area2D" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="Area2D" method="_on_mouse_exited"]
